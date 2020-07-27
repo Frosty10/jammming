@@ -8,39 +8,15 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchResults: [
-        {
-          name: 'bobo', 
-          artist: 'Samuel', 
-          album: 'summer', 
-          id: 12
-        }, 
-        {
-          name: 'the clown', 
-          artist: 'Smith', 
-          album: 'depression', 
-          id: 13
-        }
-      ],
-      playlistName: 'Enter Playlist Name',
-      playlistTracks: [
-        {
-          name: 'boboo', 
-          artist: 'Samuel', 
-          album: 'summer', 
-          id: 11
-        },
-        {
-          name: 'da clung', 
-          artist: 'Smith', 
-          album: 'depression', 
-          id: 14
-        }
-      ]
+      searchResults: [],
+      playlistName: 'Default Playlist',
+      playlistTracks: []
     }
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
     this.updatePlaylistName = this.updatePlaylistName.bind(this);
+    this.updatePlaylistName = this.updatePlaylistName.bind(this);
+    this.savePlaylist = this.savePlaylist.bind(this);
   }
 
   addTrack(track) {
@@ -59,6 +35,11 @@ class App extends React.Component {
     };
   }
 
+  savePlaylist() {
+    const trackURIs = this.state.playlistTracks.map(track => track.uri);
+    
+  }
+
   updatePlaylistName(name) {
     this.setState({playlistName: name})
   }
@@ -71,7 +52,7 @@ class App extends React.Component {
           <SearchBar />
           <div className="App-playlist">
             <SearchResults results={this.state.searchResults} onAdd={this.addTrack} />
-            <Playlist name={this.state.playlistName} tracks={this.state.playlistTracks} onRemove={this.removeTrack} onNameChange={this.updatePlaylistName} />
+            <Playlist name={this.state.playlistName} tracks={this.state.playlistTracks} onRemove={this.removeTrack} onNameChange={this.updatePlaylistName} onSave={this.savePlaylist} />
           </div>
         </div>
       </div>
