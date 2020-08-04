@@ -1,5 +1,5 @@
 const clientId = '55faa678de3e4821940b75e51b2c10b7';
-const redirectURI = 'http://localhost:3000/';
+const redirectURI = 'https://trejonwinter.surge.sh/';
 let userToken;
 
 export const Spotify = {
